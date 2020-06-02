@@ -1,10 +1,13 @@
 package spring;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 public class MemberInfoPrinter {
 	
+	//@Autowired(required=false)
+	//@Resource(name="memberDao")
 	@Autowired
 	private MemberDao memberDao;
 	private MemberPrinter printer;
@@ -13,11 +16,19 @@ public class MemberInfoPrinter {
 		this.memberDao = memberDao;
 	}
 
+	//@Autowired(required=false)
+	//@Qualifier("sysout")
+	//@Resource(name="memberPrinter")
 	@Autowired
-	@Qualifier("sysout")
 	public void setPrinter(MemberPrinter printer) {
 		this.printer = printer;
 	}
+	
+	/* @Autowired
+	public void injectDependency(MemberDao memberDao, MemberPrinter printer) {
+		this.memberDao = memberDao;
+		this.printer = printer;
+	} */
 	
 	public void printMemberInfo(String email) {
 		Member member = memberDao.selectByEmail(email);
