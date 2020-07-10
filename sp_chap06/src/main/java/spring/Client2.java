@@ -1,6 +1,6 @@
 package spring;
 
-public class Client2 {
+public class Client2 { 
 	
 	private String host;
 	
